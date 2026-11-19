@@ -40,6 +40,15 @@ class KVTestCase(unittest.TestCase):
         self.assertEqual(self.client.post("/a", json={"wrong": 1}).status_code, 400)
         self.assertEqual(self.client.patch("/a").status_code, 405)
 
+    def test_list_keys(self):
+        # Empty store -> no keys
+        self.assertEqual(self.client.get("/").get_json(), {"count": 0, "keys": []})
+        self.client.post("/a", json={"value": "1"})
+        self.client.post("/b", json={"value": "2"})
+        self.client.delete("/a")
+        body = self.client.get("/").get_json()
+        self.assertEqual(body, {"count": 1, "keys": ["b"]})  # deleted keys are not listed
+
     def test_persistence_across_restart(self):
         self.client.post("/a", json={"value": "1"})
         self.client.post("/b", json={"value": "2"})

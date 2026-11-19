@@ -13,8 +13,8 @@ from 1 to 2 to 3 stores.
 | 0  | Concepts primer (read before coding)          | done        |
 | 1  | Project setup and baseline check              | done        |
 | 2  | Consistent hashing ring (`hash_ring.py`)      | done        |
-| 3  | Small server additions (`kv_server.py`)       | not started |
-| 4  | Containers: Dockerfile + `docker-compose.yml` | not started |
+| 3  | Small server additions (`kv_server.py`)       | done        |
+| 4  | Containers: Dockerfile + `docker-compose.yml` | done        |
 | 5  | Sharded client (`kv_client.py`)               | not started |
 | 6  | Adding/removing stores while running          | not started |
 | 7  | Benchmark upgrade (`kv_bench.py`)             | not started |
@@ -187,8 +187,8 @@ Most of the server stays the same; each container runs the same code as before. 
 
 1. `GET /` → lists the keys this store holds (`{"keys": [...], "count": n}`). Needed by `rebalance.py` to know what
    to move, and useful for showing how keys are spread across the stores.
-2. `GET /_health` → `{"status": "ok"}`, so scripts can wait until a container is ready before sending traffic.
-   (Note: the route must be declared so it doesn't clash with `/<path:key>`. We'll handle that.)
+2. ~~`GET /_health`~~ Dropped: `GET /` doubles as the health check (if it answers, the store is up). A
+   `/_health` route would clash with `/<path:key>` (a key literally named `_health` would behave oddly).
 3. `--log-level` flag. Logging every request to file + console is slow, so benchmark runs use `WARNING` and the
    benchmark measures the store instead of the logging. We'll measure the difference, which is a good report point.
 
@@ -211,7 +211,7 @@ volumes: { kv1-data: {}, kv2-data: {}, kv3-data: {} }
   one container could use the whole laptop and the 1-vs-3 comparison wouldn't be fair. We'll explain this in the
   report as a deliberate experimental choice.
 - Named volumes (not folder mounts), because folder mounts on macOS are slow and would distort fsync timings.
-- A healthcheck that calls `/_health`.
+- Quiet logging (`--log-level WARNING`) set via `command:`. Readiness is checked by scripts polling `GET /`.
 
 Commands you'll learn: `docker compose up -d kv1`, `docker compose up -d kv1 kv2 kv3`, `docker compose ps`,
 `docker compose logs kv2`, `docker stats`, `docker compose down` (and `down -v` to wipe data).
@@ -332,4 +332,6 @@ makes the code more complex.
   `analyze_hashing.py` and set the default to 500 (1.09x). The lookup cost barely changes (binary search).
 - **Python's `hash()` is not stable across runs** (string hashing is randomized each time Python starts). → Two clients
   would disagree about key owners. → Used MD5 from `hashlib`, which is deterministic.
+- **Health route clashing with key routes.** `/_health` also matches `/<path:key>`. → Used the bare `/` instead,
+  which `<path:key>` can never match (keys are at least 1 character), for both key listing and health checks.
 - **`Dockerfile.txt` not found by `docker build`.** → Docker looks for a file named exactly `Dockerfile`. → Renamed it.

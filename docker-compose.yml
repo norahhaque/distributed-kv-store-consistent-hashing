@@ -1,0 +1,48 @@
+# Three KV store containers built from the same Dockerfile.
+# Authors: Norah, Aymah
+#
+#   docker compose up -d --build kv1            start 1 store   (http://localhost:8081)
+#   docker compose up -d --build kv1 kv2        start 2 stores  (+ http://localhost:8082)
+#   docker compose up -d --build                start all 3     (+ http://localhost:8083)
+#   docker compose ps                           list running containers
+#   docker compose logs kv2                     show one container's output
+#   docker compose down                         stop and remove containers (data volumes are kept)
+#   docker compose down -v                      ...and also delete the data volumes (clean slate)
+
+services:
+  kv1:
+    build: .                    # build the image from the Dockerfile in this folder
+    image: kv-store             # name of that image (all three containers share it)
+    ports:
+      - "8081:8080"             # laptop port 8081 -> port 8080 inside the container
+    volumes:
+      - kv1-data:/app/data      # the store's AOF file lives in a volume, so it survives restarts
+    cpus: 1.0                   # at most 1 CPU, so each container acts like its own 1-CPU machine
+    # Same as the Dockerfile's CMD, plus quiet logging so benchmarks measure the store, not the logging
+    command: ["python", "kv_server.py", "--host", "0.0.0.0", "--port", "8080", "--log-level", "WARNING"]
+
+  kv2:
+    build: .
+    image: kv-store
+    ports:
+      - "8082:8080"
+    volumes:
+      - kv2-data:/app/data
+    cpus: 1.0
+    command: ["python", "kv_server.py", "--host", "0.0.0.0", "--port", "8080", "--log-level", "WARNING"]
+
+  kv3:
+    build: .
+    image: kv-store
+    ports:
+      - "8083:8080"
+    volumes:
+      - kv3-data:/app/data
+    cpus: 1.0
+    command: ["python", "kv_server.py", "--host", "0.0.0.0", "--port", "8080", "--log-level", "WARNING"]
+
+# Named volumes: storage managed by Docker, one per store, kept separate from each other
+volumes:
+  kv1-data:
+  kv2-data:
+  kv3-data:
