@@ -18,9 +18,9 @@ from 1 to 2 to 3 stores.
 | 5  | Sharded client (`kv_client.py`)               | done        |
 | 6  | Adding/removing stores while running          | done        |
 | 7  | Benchmark upgrade (`kv_bench.py`)             | done        |
-| 8  | Run the experiments (1 → 2 → 3 stores)        | not started |
-| 9  | Graphs and tables (`plot_results.py`)         | not started |
-| 10 | Report + README, final submission             | not started |
+| 8  | Run the experiments (1 → 2 → 3 stores)        | done (main + sweep + procs-3 check) |
+| 9  | Graphs and tables (`plot_results.py`)         | done        |
+| 10 | Report + README, final submission             | draft done (REPORT.md + Claude Doc https://claude.ai/artifact/44aZQve6crZzkc4Tjgpd3E); team review, final check, submit |
 | 11 | (Stretch) Replication for fault tolerance     | optional    |
 
 Rule for every phase: **build a small piece → test it → write down any problem in the Challenges Log (bottom of
@@ -362,4 +362,19 @@ makes the code more complex.
   ~70 s run. Minor, so we kept `cpus: 1.0`.
 - **Large run-to-run variation** (e.g. 1-store SET 997 vs 558 ops/s). → Shared laptop: background apps, disk, and VM
   noise. → 5 trials per configuration, report median and range.
+- **Mac was in Low Power Mode on battery** during early test runs (CPU deliberately slowed). → Plugged in and turned
+  it off before the real experiments; closed Chrome. Results became ~2x higher and much more consistent (e.g. 1-store
+  SET range 1821-1870 ops/s over 5 trials, vs 558-997 before).
+- **GET with 3 stores was not faster than with 2** (3149 vs 3533 ops/s). → Benchmark CPU was ~160-175% of its 200%
+  budget during GET, and the sweep shows GET topping out at ~3,600-3,900 ops/s for both 2 and 3 stores: the
+  benchmark client, not the stores, is the limit for reads above 2 stores.
+- **Follow-up check (3-process benchmark, 3 CPUs):** GET rose ~12-25% but 3 stores still ≈ 2 stores. Stores were at
+  75-88% of their CPU and the benchmark at ~204%, so ~4.5 cores were busy on a Mac (Apple M3) with only 4 performance
+  cores. → The read ceiling at 3 stores is the shared laptop, not one component. Explained as a limitation.
+- **My one-off zsh loop failed to start 2-3 stores** (zsh doesn't split `"kv1 kv2"` into two words). → Re-ran those
+  cases with the names written out; `run_experiments.sh` uses bash and was not affected.
+- **Same color meant different things in different figures** (blue = SET in one, 1 store in another). → Color now
+  always means store count (blue 1, orange 2, aqua 3); SET/GET are separate panels; benchmark setups use grays.
+  Palette checked for colorblind safety; aqua has low contrast on white, so every figure has a legend/labels and
+  all numbers are also in `results/summary.md`.
 - **`Dockerfile.txt` not found by `docker build`.** → Docker looks for a file named exactly `Dockerfile`. → Renamed it.

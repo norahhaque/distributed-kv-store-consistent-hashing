@@ -1,0 +1,211 @@
+Started Fri Nov 20 10:35:53 CST 2026. Docker CPUs: 6
+=== Part 1: main experiment (5 trials) ===
+1 store(s), 10000 keys, 24 threads in 2 process(es), trial 1, docker
+  SET: 10000 ok, 0 errors | 1820.7 ops/s | avg 13.17 ms, p50 12.79, p95 16.11, p99 19.83 | client CPU 71% | keys per store 10000
+  GET: 10000 ok, 0 errors | 2081.3 ops/s | avg 11.52 ms, p50 9.09, p95 26.15, p99 41.72 | client CPU 162% | keys per store 10000
+2 store(s), 10000 keys, 24 threads in 2 process(es), trial 1, docker
+  SET: 10000 ok, 0 errors | 2583.3 ops/s | avg 9.27 ms, p50 9.16, p95 15.75, p99 18.69 | client CPU 108% | keys per store 5017/4983
+  GET: 10000 ok, 0 errors | 4126.5 ops/s | avg 5.8 ms, p50 5.55, p95 9.52, p99 13.56 | client CPU 172% | keys per store 5017/4983
+3 store(s), 10000 keys, 24 threads in 2 process(es), trial 1, docker
+  SET: 10000 ok, 0 errors | 2907.5 ops/s | avg 8.21 ms, p50 7.11, p95 17.0, p99 20.16 | client CPU 131% | keys per store 3417/3279/3304
+  GET: 10000 ok, 0 errors | 3962.4 ops/s | avg 6.01 ms, p50 5.52, p95 10.73, p99 15.97 | client CPU 173% | keys per store 3417/3279/3304
+1 store(s), 10000 keys, 24 threads in 2 process(es), trial 2, docker
+  SET: 10000 ok, 0 errors | 1869.9 ops/s | avg 12.81 ms, p50 12.49, p95 13.96, p99 17.6 | client CPU 72% | keys per store 10000
+  GET: 10000 ok, 0 errors | 1935.2 ops/s | avg 12.38 ms, p50 9.64, p95 28.08, p99 42.94 | client CPU 164% | keys per store 10000
+2 store(s), 10000 keys, 24 threads in 2 process(es), trial 2, docker
+  SET: 10000 ok, 0 errors | 2447.6 ops/s | avg 9.79 ms, p50 9.6, p95 16.77, p99 26.1 | client CPU 104% | keys per store 5017/4983
+  GET: 10000 ok, 0 errors | 4004.1 ops/s | avg 5.96 ms, p50 5.58, p95 10.26, p99 17.8 | client CPU 169% | keys per store 5017/4983
+3 store(s), 10000 keys, 24 threads in 2 process(es), trial 2, docker
+  SET: 10000 ok, 0 errors | 2930.6 ops/s | avg 8.15 ms, p50 7.05, p95 16.95, p99 19.32 | client CPU 130% | keys per store 3417/3279/3304
+  GET: 10000 ok, 0 errors | 3488.3 ops/s | avg 6.81 ms, p50 5.98, p95 13.3, p99 24.01 | client CPU 165% | keys per store 3417/3279/3304
+1 store(s), 10000 keys, 24 threads in 2 process(es), trial 3, docker
+  SET: 10000 ok, 0 errors | 1829.5 ops/s | avg 13.1 ms, p50 12.72, p95 15.66, p99 20.27 | client CPU 74% | keys per store 10000
+  GET: 10000 ok, 0 errors | 1990.2 ops/s | avg 12.04 ms, p50 9.6, p95 26.49, p99 43.52 | client CPU 159% | keys per store 10000
+2 store(s), 10000 keys, 24 threads in 2 process(es), trial 3, docker
+  SET: 10000 ok, 0 errors | 2403.1 ops/s | avg 9.96 ms, p50 9.42, p95 16.77, p99 27.04 | client CPU 106% | keys per store 5017/4983
+  GET: 10000 ok, 0 errors | 3533.3 ops/s | avg 6.78 ms, p50 6.05, p95 11.69, p99 30.22 | client CPU 164% | keys per store 5017/4983
+3 store(s), 10000 keys, 24 threads in 2 process(es), trial 3, docker
+  SET: 10000 ok, 0 errors | 2907.8 ops/s | avg 8.23 ms, p50 7.31, p95 17.01, p99 19.48 | client CPU 132% | keys per store 3417/3279/3304
+  GET: 10000 ok, 0 errors | 3063.6 ops/s | avg 7.78 ms, p50 6.14, p95 17.57, p99 42.44 | client CPU 157% | keys per store 3417/3279/3304
+1 store(s), 10000 keys, 24 threads in 2 process(es), trial 4, docker
+  SET: 10000 ok, 0 errors | 1824.1 ops/s | avg 13.14 ms, p50 12.85, p95 15.42, p99 20.92 | client CPU 74% | keys per store 10000
+  GET: 10000 ok, 0 errors | 1919.4 ops/s | avg 12.48 ms, p50 10.15, p95 27.22, p99 41.05 | client CPU 156% | keys per store 10000
+2 store(s), 10000 keys, 24 threads in 2 process(es), trial 4, docker
+  SET: 10000 ok, 0 errors | 2355.5 ops/s | avg 10.17 ms, p50 9.81, p95 17.14, p99 30.72 | client CPU 104% | keys per store 5017/4983
+  GET: 10000 ok, 0 errors | 3487.6 ops/s | avg 6.85 ms, p50 6.2, p95 11.88, p99 34.71 | client CPU 159% | keys per store 5017/4983
+3 store(s), 10000 keys, 24 threads in 2 process(es), trial 4, docker
+  SET: 10000 ok, 0 errors | 2891.2 ops/s | avg 8.27 ms, p50 7.48, p95 16.78, p99 19.54 | client CPU 132% | keys per store 3417/3279/3304
+  GET: 10000 ok, 0 errors | 3027.3 ops/s | avg 7.91 ms, p50 6.32, p95 17.04, p99 42.69 | client CPU 155% | keys per store 3417/3279/3304
+1 store(s), 10000 keys, 24 threads in 2 process(es), trial 5, docker
+  SET: 10000 ok, 0 errors | 1846.9 ops/s | avg 12.98 ms, p50 12.73, p95 15.14, p99 18.04 | client CPU 74% | keys per store 10000
+  GET: 10000 ok, 0 errors | 1945.9 ops/s | avg 12.29 ms, p50 9.48, p95 29.44, p99 48.74 | client CPU 159% | keys per store 10000
+2 store(s), 10000 keys, 24 threads in 2 process(es), trial 5, docker
+  SET: 10000 ok, 0 errors | 2329.5 ops/s | avg 10.29 ms, p50 9.57, p95 17.56, p99 26.75 | client CPU 104% | keys per store 5017/4983
+  GET: 10000 ok, 0 errors | 3293.1 ops/s | avg 7.25 ms, p50 6.29, p95 13.93, p99 36.02 | client CPU 159% | keys per store 5017/4983
+3 store(s), 10000 keys, 24 threads in 2 process(es), trial 5, docker
+  SET: 10000 ok, 0 errors | 2845.9 ops/s | avg 8.41 ms, p50 7.55, p95 16.99, p99 20.17 | client CPU 132% | keys per store 3417/3279/3304
+  GET: 10000 ok, 0 errors | 3148.6 ops/s | avg 7.6 ms, p50 6.35, p95 15.65, p99 35.19 | client CPU 158% | keys per store 3417/3279/3304
+=== Part 2: thread sweep (3 trials) ===
+1 store(s), 6000 keys, 1 threads in 2 process(es), trial 1, docker
+  SET: 6000 ok, 0 errors | 1030.1 ops/s | avg 0.97 ms, p50 0.96, p95 1.17, p99 1.42 | client CPU 37% | keys per store 6000
+  GET: 6000 ok, 0 errors | 1535.7 ops/s | avg 0.65 ms, p50 0.63, p95 0.72, p99 1.13 | client CPU 55% | keys per store 6000
+2 store(s), 6000 keys, 1 threads in 2 process(es), trial 1, docker
+  SET: 6000 ok, 0 errors | 1026.3 ops/s | avg 0.97 ms, p50 0.96, p95 1.16, p99 1.49 | client CPU 37% | keys per store 3040/2960
+  GET: 6000 ok, 0 errors | 1348.4 ops/s | avg 0.74 ms, p50 0.65, p95 0.95, p99 2.77 | client CPU 51% | keys per store 3040/2960
+3 store(s), 6000 keys, 1 threads in 2 process(es), trial 1, docker
+  SET: 6000 ok, 0 errors | 936.5 ops/s | avg 1.07 ms, p50 1.0, p95 1.31, p99 1.94 | client CPU 36% | keys per store 2067/1944/1989
+  GET: 6000 ok, 0 errors | 1393.1 ops/s | avg 0.72 ms, p50 0.67, p95 0.98, p99 1.51 | client CPU 52% | keys per store 2067/1944/1989
+1 store(s), 6000 keys, 3 threads in 2 process(es), trial 1, docker
+  SET: 6000 ok, 0 errors | 1517.5 ops/s | avg 1.5 ms, p50 1.46, p95 2.01, p99 3.82 | client CPU 61% | keys per store 6000
+  GET: 6000 ok, 0 errors | 2157.4 ops/s | avg 1.1 ms, p50 0.93, p95 1.72, p99 5.8 | client CPU 85% | keys per store 6000
+2 store(s), 6000 keys, 3 threads in 2 process(es), trial 1, docker
+  SET: 6000 ok, 0 errors | 1616.8 ops/s | avg 1.37 ms, p50 1.32, p95 1.98, p99 2.58 | client CPU 65% | keys per store 3040/2960
+  GET: 6000 ok, 0 errors | 2343.4 ops/s | avg 1.0 ms, p50 0.86, p95 1.49, p99 5.02 | client CPU 93% | keys per store 3040/2960
+3 store(s), 6000 keys, 3 threads in 2 process(es), trial 1, docker
+  SET: 6000 ok, 0 errors | 1566.3 ops/s | avg 1.43 ms, p50 1.29, p95 1.97, p99 5.35 | client CPU 63% | keys per store 2067/1944/1989
+  GET: 6000 ok, 0 errors | 2600.5 ops/s | avg 0.91 ms, p50 0.85, p95 1.42, p99 2.06 | client CPU 102% | keys per store 2067/1944/1989
+1 store(s), 6000 keys, 6 threads in 2 process(es), trial 1, docker
+  SET: 6000 ok, 0 errors | 1848.5 ops/s | avg 3.24 ms, p50 3.19, p95 3.85, p99 4.67 | client CPU 75% | keys per store 6000
+  GET: 6000 ok, 0 errors | 2340.9 ops/s | avg 2.56 ms, p50 1.99, p95 3.61, p99 19.07 | client CPU 95% | keys per store 6000
+2 store(s), 6000 keys, 6 threads in 2 process(es), trial 1, docker
+  SET: 6000 ok, 0 errors | 2277.7 ops/s | avg 2.63 ms, p50 2.53, p95 3.91, p99 7.92 | client CPU 96% | keys per store 3040/2960
+  GET: 6000 ok, 0 errors | 3731.0 ops/s | avg 1.6 ms, p50 1.41, p95 2.69, p99 5.33 | client CPU 153% | keys per store 3040/2960
+3 store(s), 6000 keys, 6 threads in 2 process(es), trial 1, docker
+  SET: 6000 ok, 0 errors | 2683.0 ops/s | avg 2.23 ms, p50 2.11, p95 3.5, p99 4.15 | client CPU 112% | keys per store 2067/1944/1989
+  GET: 6000 ok, 0 errors | 3390.4 ops/s | avg 1.76 ms, p50 1.49, p95 2.97, p99 8.68 | client CPU 152% | keys per store 2067/1944/1989
+1 store(s), 6000 keys, 12 threads in 2 process(es), trial 1, docker
+  SET: 6000 ok, 0 errors | 1546.9 ops/s | avg 7.74 ms, p50 6.96, p95 10.84, p99 25.19 | client CPU 63% | keys per store 6000
+  GET: 6000 ok, 0 errors | 2174.8 ops/s | avg 5.51 ms, p50 4.09, p95 20.49, p99 26.07 | client CPU 93% | keys per store 6000
+2 store(s), 6000 keys, 12 threads in 2 process(es), trial 1, docker
+  SET: 6000 ok, 0 errors | 2292.2 ops/s | avg 5.2 ms, p50 5.13, p95 8.72, p99 11.27 | client CPU 99% | keys per store 3040/2960
+  GET: 6000 ok, 0 errors | 3171.2 ops/s | avg 3.77 ms, p50 3.05, p95 7.98, p99 17.99 | client CPU 151% | keys per store 3040/2960
+3 store(s), 6000 keys, 12 threads in 2 process(es), trial 1, docker
+  SET: 6000 ok, 0 errors | 2273.3 ops/s | avg 5.27 ms, p50 4.42, p95 10.21, p99 23.58 | client CPU 111% | keys per store 2067/1944/1989
+  GET: 6000 ok, 0 errors | 3794.2 ops/s | avg 3.15 ms, p50 2.91, p95 5.55, p99 7.66 | client CPU 174% | keys per store 2067/1944/1989
+1 store(s), 6000 keys, 24 threads in 2 process(es), trial 1, docker
+  SET: 6000 ok, 0 errors | 1892.5 ops/s | avg 12.65 ms, p50 12.43, p95 14.34, p99 17.64 | client CPU 76% | keys per store 6000
+  GET: 6000 ok, 0 errors | 2125.1 ops/s | avg 11.27 ms, p50 8.39, p95 26.84, p99 43.1 | client CPU 95% | keys per store 6000
+2 store(s), 6000 keys, 24 threads in 2 process(es), trial 1, docker
+  SET: 6000 ok, 0 errors | 2338.8 ops/s | avg 10.24 ms, p50 9.74, p95 17.54, p99 33.9 | client CPU 105% | keys per store 3040/2960
+  GET: 6000 ok, 0 errors | 3378.1 ops/s | avg 7.08 ms, p50 6.04, p95 12.85, p99 33.66 | client CPU 165% | keys per store 3040/2960
+3 store(s), 6000 keys, 24 threads in 2 process(es), trial 1, docker
+  SET: 6000 ok, 0 errors | 2673.2 ops/s | avg 8.93 ms, p50 7.49, p95 17.55, p99 40.2 | client CPU 125% | keys per store 2067/1944/1989
+  GET: 6000 ok, 0 errors | 3636.2 ops/s | avg 6.52 ms, p50 5.9, p95 11.69, p99 16.04 | client CPU 175% | keys per store 2067/1944/1989
+1 store(s), 6000 keys, 48 threads in 2 process(es), trial 1, docker
+  SET: 6000 ok, 0 errors | 1923.0 ops/s | avg 24.88 ms, p50 24.55, p95 27.77, p99 31.53 | client CPU 77% | keys per store 6000
+  GET: 6000 ok, 0 errors | 2225.6 ops/s | avg 21.49 ms, p50 16.78, p95 36.36, p99 62.98 | client CPU 98% | keys per store 6000
+2 store(s), 6000 keys, 48 threads in 2 process(es), trial 1, docker
+  SET: 6000 ok, 0 errors | 2417.1 ops/s | avg 19.77 ms, p50 18.33, p95 34.47, p99 63.47 | client CPU 106% | keys per store 3040/2960
+  GET: 6000 ok, 0 errors | 3579.9 ops/s | avg 13.36 ms, p50 11.88, p95 25.19, p99 43.46 | client CPU 177% | keys per store 3040/2960
+3 store(s), 6000 keys, 48 threads in 2 process(es), trial 1, docker
+  SET: 6000 ok, 0 errors | 2766.2 ops/s | avg 17.25 ms, p50 10.49, p95 43.08, p99 52.17 | client CPU 135% | keys per store 2067/1944/1989
+  GET: 6000 ok, 0 errors | 3307.9 ops/s | avg 14.26 ms, p50 12.41, p95 28.08, p99 53.71 | client CPU 167% | keys per store 2067/1944/1989
+1 store(s), 6000 keys, 1 threads in 2 process(es), trial 2, docker
+  SET: 6000 ok, 0 errors | 994.2 ops/s | avg 1.0 ms, p50 0.96, p95 1.2, p99 1.73 | client CPU 37% | keys per store 6000
+  GET: 6000 ok, 0 errors | 1487.3 ops/s | avg 0.67 ms, p50 0.64, p95 0.83, p99 1.43 | client CPU 54% | keys per store 6000
+2 store(s), 6000 keys, 1 threads in 2 process(es), trial 2, docker
+  SET: 6000 ok, 0 errors | 992.4 ops/s | avg 1.01 ms, p50 0.98, p95 1.24, p99 1.79 | client CPU 36% | keys per store 3040/2960
+  GET: 6000 ok, 0 errors | 1420.2 ops/s | avg 0.7 ms, p50 0.65, p95 0.91, p99 1.56 | client CPU 53% | keys per store 3040/2960
+3 store(s), 6000 keys, 1 threads in 2 process(es), trial 2, docker
+  SET: 6000 ok, 0 errors | 951.3 ops/s | avg 1.05 ms, p50 1.0, p95 1.25, p99 1.91 | client CPU 36% | keys per store 2067/1944/1989
+  GET: 6000 ok, 0 errors | 1350.7 ops/s | avg 0.74 ms, p50 0.67, p95 0.92, p99 2.11 | client CPU 51% | keys per store 2067/1944/1989
+1 store(s), 6000 keys, 3 threads in 2 process(es), trial 2, docker
+  SET: 6000 ok, 0 errors | 1587.5 ops/s | avg 1.41 ms, p50 1.43, p95 1.92, p99 2.46 | client CPU 60% | keys per store 6000
+  GET: 6000 ok, 0 errors | 2120.7 ops/s | avg 1.12 ms, p50 0.91, p95 1.74, p99 8.51 | client CPU 82% | keys per store 6000
+2 store(s), 6000 keys, 3 threads in 2 process(es), trial 2, docker
+  SET: 6000 ok, 0 errors | 1494.0 ops/s | avg 1.45 ms, p50 1.33, p95 2.35, p99 3.91 | client CPU 59% | keys per store 3040/2960
+  GET: 6000 ok, 0 errors | 2371.3 ops/s | avg 0.99 ms, p50 0.87, p95 1.56, p99 3.85 | client CPU 95% | keys per store 3040/2960
+3 store(s), 6000 keys, 3 threads in 2 process(es), trial 2, docker
+  SET: 6000 ok, 0 errors | 1593.1 ops/s | avg 1.41 ms, p50 1.28, p95 2.02, p99 5.34 | client CPU 65% | keys per store 2067/1944/1989
+  GET: 6000 ok, 0 errors | 2340.1 ops/s | avg 1.02 ms, p50 0.87, p95 1.51, p99 4.42 | client CPU 96% | keys per store 2067/1944/1989
+1 store(s), 6000 keys, 6 threads in 2 process(es), trial 2, docker
+  SET: 6000 ok, 0 errors | 1889.7 ops/s | avg 3.17 ms, p50 3.11, p95 3.79, p99 4.54 | client CPU 75% | keys per store 6000
+  GET: 6000 ok, 0 errors | 2365.0 ops/s | avg 2.53 ms, p50 1.94, p95 4.23, p99 18.67 | client CPU 95% | keys per store 6000
+2 store(s), 6000 keys, 6 threads in 2 process(es), trial 2, docker
+  SET: 6000 ok, 0 errors | 2250.1 ops/s | avg 2.66 ms, p50 2.57, p95 4.03, p99 5.14 | client CPU 98% | keys per store 3040/2960
+  GET: 6000 ok, 0 errors | 3065.5 ops/s | avg 1.96 ms, p50 1.56, p95 3.69, p99 10.08 | client CPU 139% | keys per store 3040/2960
+3 store(s), 6000 keys, 6 threads in 2 process(es), trial 2, docker
+  SET: 6000 ok, 0 errors | 2319.8 ops/s | avg 2.58 ms, p50 2.25, p95 4.02, p99 12.07 | client CPU 105% | keys per store 2067/1944/1989
+  GET: 6000 ok, 0 errors | 3760.2 ops/s | avg 1.59 ms, p50 1.46, p95 2.64, p99 3.63 | client CPU 163% | keys per store 2067/1944/1989
+1 store(s), 6000 keys, 12 threads in 2 process(es), trial 2, docker
+  SET: 6000 ok, 0 errors | 1742.0 ops/s | avg 6.88 ms, p50 6.33, p95 7.99, p99 23.28 | client CPU 74% | keys per store 6000
+  GET: 6000 ok, 0 errors | 2155.1 ops/s | avg 5.54 ms, p50 4.14, p95 17.66, p99 23.34 | client CPU 95% | keys per store 6000
+2 store(s), 6000 keys, 12 threads in 2 process(es), trial 2, docker
+  SET: 6000 ok, 0 errors | 2270.5 ops/s | avg 5.28 ms, p50 4.96, p95 8.45, p99 21.32 | client CPU 101% | keys per store 3040/2960
+  GET: 6000 ok, 0 errors | 3206.8 ops/s | avg 3.73 ms, p50 3.1, p95 8.98, p99 16.76 | client CPU 153% | keys per store 3040/2960
+3 store(s), 6000 keys, 12 threads in 2 process(es), trial 2, docker
+  SET: 6000 ok, 0 errors | 2658.4 ops/s | avg 4.5 ms, p50 4.04, p95 8.1, p99 14.59 | client CPU 121% | keys per store 2067/1944/1989
+  GET: 6000 ok, 0 errors | 3689.9 ops/s | avg 3.23 ms, p50 2.84, p95 5.66, p99 12.18 | client CPU 167% | keys per store 2067/1944/1989
+1 store(s), 6000 keys, 24 threads in 2 process(es), trial 2, docker
+  SET: 6000 ok, 0 errors | 1752.3 ops/s | avg 13.67 ms, p50 12.46, p95 16.11, p99 47.98 | client CPU 72% | keys per store 6000
+  GET: 6000 ok, 0 errors | 2444.1 ops/s | avg 9.8 ms, p50 8.01, p95 24.58, p99 26.81 | client CPU 99% | keys per store 6000
+2 store(s), 6000 keys, 24 threads in 2 process(es), trial 2, docker
+  SET: 6000 ok, 0 errors | 2377.6 ops/s | avg 9.91 ms, p50 9.61, p95 16.07, p99 25.13 | client CPU 102% | keys per store 3040/2960
+  GET: 6000 ok, 0 errors | 3803.2 ops/s | avg 6.27 ms, p50 5.8, p95 10.16, p99 15.85 | client CPU 174% | keys per store 3040/2960
+3 store(s), 6000 keys, 24 threads in 2 process(es), trial 2, docker
+  SET: 6000 ok, 0 errors | 2776.0 ops/s | avg 8.61 ms, p50 7.2, p95 18.3, p99 22.4 | client CPU 130% | keys per store 2067/1944/1989
+  GET: 6000 ok, 0 errors | 2291.7 ops/s | avg 10.46 ms, p50 6.69, p95 36.39, p99 76.53 | client CPU 146% | keys per store 2067/1944/1989
+1 store(s), 6000 keys, 48 threads in 2 process(es), trial 2, docker
+  SET: 6000 ok, 0 errors | 1655.8 ops/s | avg 28.88 ms, p50 25.86, p95 34.67, p99 135.92 | client CPU 71% | keys per store 6000
+  GET: 6000 ok, 0 errors | 2367.4 ops/s | avg 20.18 ms, p50 16.98, p95 34.63, p99 36.59 | client CPU 101% | keys per store 6000
+2 store(s), 6000 keys, 48 threads in 2 process(es), trial 2, docker
+  SET: 6000 ok, 0 errors | 2153.7 ops/s | avg 22.2 ms, p50 19.69, p95 40.61, p99 122.64 | client CPU 103% | keys per store 3040/2960
+  GET: 6000 ok, 0 errors | 3707.1 ops/s | avg 12.92 ms, p50 12.27, p95 22.75, p99 28.16 | client CPU 177% | keys per store 3040/2960
+3 store(s), 6000 keys, 48 threads in 2 process(es), trial 2, docker
+  SET: 6000 ok, 0 errors | 2754.6 ops/s | avg 17.28 ms, p50 11.65, p95 41.72, p99 49.77 | client CPU 131% | keys per store 2067/1944/1989
+  GET: 6000 ok, 0 errors | 2894.2 ops/s | avg 16.51 ms, p50 13.41, p95 37.56, p99 76.39 | client CPU 156% | keys per store 2067/1944/1989
+1 store(s), 6000 keys, 1 threads in 2 process(es), trial 3, docker
+  SET: 6000 ok, 0 errors | 983.6 ops/s | avg 1.01 ms, p50 0.96, p95 1.24, p99 2.02 | client CPU 36% | keys per store 6000
+  GET: 6000 ok, 0 errors | 1476.3 ops/s | avg 0.68 ms, p50 0.63, p95 0.85, p99 1.46 | client CPU 55% | keys per store 6000
+2 store(s), 6000 keys, 1 threads in 2 process(es), trial 3, docker
+  SET: 6000 ok, 0 errors | 967.7 ops/s | avg 1.03 ms, p50 0.98, p95 1.29, p99 1.8 | client CPU 37% | keys per store 3040/2960
+  GET: 6000 ok, 0 errors | 1333.2 ops/s | avg 0.75 ms, p50 0.67, p95 0.98, p99 2.01 | client CPU 51% | keys per store 3040/2960
+3 store(s), 6000 keys, 1 threads in 2 process(es), trial 3, docker
+  SET: 6000 ok, 0 errors | 933.9 ops/s | avg 1.07 ms, p50 0.99, p95 1.31, p99 2.71 | client CPU 35% | keys per store 2067/1944/1989
+  GET: 6000 ok, 0 errors | 1434.8 ops/s | avg 0.69 ms, p50 0.66, p95 0.82, p99 1.45 | client CPU 52% | keys per store 2067/1944/1989
+1 store(s), 6000 keys, 3 threads in 2 process(es), trial 3, docker
+  SET: 6000 ok, 0 errors | 1531.7 ops/s | avg 1.48 ms, p50 1.45, p95 1.97, p99 2.79 | client CPU 60% | keys per store 6000
+  GET: 6000 ok, 0 errors | 2227.9 ops/s | avg 1.07 ms, p50 0.92, p95 1.56, p99 7.13 | client CPU 84% | keys per store 6000
+2 store(s), 6000 keys, 3 threads in 2 process(es), trial 3, docker
+  SET: 6000 ok, 0 errors | 1562.0 ops/s | avg 1.43 ms, p50 1.32, p95 2.04, p99 3.9 | client CPU 64% | keys per store 3040/2960
+  GET: 6000 ok, 0 errors | 2488.5 ops/s | avg 0.95 ms, p50 0.86, p95 1.43, p99 2.62 | client CPU 97% | keys per store 3040/2960
+3 store(s), 6000 keys, 3 threads in 2 process(es), trial 3, docker
+  SET: 6000 ok, 0 errors | 1531.5 ops/s | avg 1.45 ms, p50 1.29, p95 2.02, p99 5.78 | client CPU 62% | keys per store 2067/1944/1989
+  GET: 6000 ok, 0 errors | 2585.4 ops/s | avg 0.89 ms, p50 0.84, p95 1.34, p99 1.81 | client CPU 98% | keys per store 2067/1944/1989
+1 store(s), 6000 keys, 6 threads in 2 process(es), trial 3, docker
+  SET: 6000 ok, 0 errors | 1784.4 ops/s | avg 3.36 ms, p50 3.15, p95 3.97, p99 6.61 | client CPU 72% | keys per store 6000
+  GET: 6000 ok, 0 errors | 2423.0 ops/s | avg 2.47 ms, p50 1.95, p95 3.33, p99 19.01 | client CPU 95% | keys per store 6000
+2 store(s), 6000 keys, 6 threads in 2 process(es), trial 3, docker
+  SET: 6000 ok, 0 errors | 2111.2 ops/s | avg 2.84 ms, p50 2.57, p95 4.34, p99 11.88 | client CPU 94% | keys per store 3040/2960
+  GET: 6000 ok, 0 errors | 3658.5 ops/s | avg 1.64 ms, p50 1.5, p95 2.7, p99 3.87 | client CPU 154% | keys per store 3040/2960
+3 store(s), 6000 keys, 6 threads in 2 process(es), trial 3, docker
+  SET: 6000 ok, 0 errors | 2283.0 ops/s | avg 2.62 ms, p50 2.28, p95 4.12, p99 11.36 | client CPU 105% | keys per store 2067/1944/1989
+  GET: 6000 ok, 0 errors | 3296.0 ops/s | avg 1.81 ms, p50 1.48, p95 2.98, p99 10.51 | client CPU 148% | keys per store 2067/1944/1989
+1 store(s), 6000 keys, 12 threads in 2 process(es), trial 3, docker
+  SET: 6000 ok, 0 errors | 1825.1 ops/s | avg 6.57 ms, p50 6.14, p95 7.74, p99 15.05 | client CPU 74% | keys per store 6000
+  GET: 6000 ok, 0 errors | 2467.7 ops/s | avg 4.86 ms, p50 3.85, p95 14.03, p99 22.57 | client CPU 96% | keys per store 6000
+2 store(s), 6000 keys, 12 threads in 2 process(es), trial 3, docker
+  SET: 6000 ok, 0 errors | 2240.6 ops/s | avg 5.33 ms, p50 5.32, p95 8.9, p99 10.86 | client CPU 99% | keys per store 3040/2960
+  GET: 6000 ok, 0 errors | 3238.8 ops/s | avg 3.7 ms, p50 3.1, p95 7.1, p99 19.21 | client CPU 154% | keys per store 3040/2960
+3 store(s), 6000 keys, 12 threads in 2 process(es), trial 3, docker
+  SET: 6000 ok, 0 errors | 2642.9 ops/s | avg 4.53 ms, p50 3.99, p95 8.04, p99 18.81 | client CPU 117% | keys per store 2067/1944/1989
+  GET: 6000 ok, 0 errors | 3598.1 ops/s | avg 3.32 ms, p50 2.91, p95 5.79, p99 14.41 | client CPU 166% | keys per store 2067/1944/1989
+1 store(s), 6000 keys, 24 threads in 2 process(es), trial 3, docker
+  SET: 6000 ok, 0 errors | 1765.7 ops/s | avg 13.56 ms, p50 12.46, p95 15.64, p99 27.48 | client CPU 73% | keys per store 6000
+  GET: 6000 ok, 0 errors | 2257.0 ops/s | avg 10.61 ms, p50 8.15, p95 26.72, p99 35.26 | client CPU 95% | keys per store 6000
+2 store(s), 6000 keys, 24 threads in 2 process(es), trial 3, docker
+  SET: 6000 ok, 0 errors | 2230.8 ops/s | avg 10.71 ms, p50 10.0, p95 18.79, p99 33.41 | client CPU 103% | keys per store 3040/2960
+  GET: 6000 ok, 0 errors | 3082.1 ops/s | avg 7.74 ms, p50 6.59, p95 15.86, p99 34.8 | client CPU 160% | keys per store 3040/2960
+3 store(s), 6000 keys, 24 threads in 2 process(es), trial 3, docker
+  SET: 6000 ok, 0 errors | 2623.1 ops/s | avg 9.11 ms, p50 7.38, p95 18.23, p99 36.67 | client CPU 124% | keys per store 2067/1944/1989
+  GET: 6000 ok, 0 errors | 3911.1 ops/s | avg 6.09 ms, p50 5.75, p95 10.68, p99 13.38 | client CPU 178% | keys per store 2067/1944/1989
+1 store(s), 6000 keys, 48 threads in 2 process(es), trial 3, docker
+  SET: 6000 ok, 0 errors | 1863.4 ops/s | avg 25.67 ms, p50 25.19, p95 28.79, p99 40.93 | client CPU 77% | keys per store 6000
+  GET: 6000 ok, 0 errors | 2200.1 ops/s | avg 21.62 ms, p50 17.02, p95 37.33, p99 70.52 | client CPU 95% | keys per store 6000
+2 store(s), 6000 keys, 48 threads in 2 process(es), trial 3, docker
+  SET: 6000 ok, 0 errors | 2301.4 ops/s | avg 20.79 ms, p50 19.39, p95 34.84, p99 66.29 | client CPU 104% | keys per store 3040/2960
+  GET: 6000 ok, 0 errors | 3491.4 ops/s | avg 13.71 ms, p50 11.88, p95 24.96, p99 61.75 | client CPU 168% | keys per store 3040/2960
+3 store(s), 6000 keys, 48 threads in 2 process(es), trial 3, docker
+  SET: 6000 ok, 0 errors | 2709.4 ops/s | avg 17.56 ms, p50 10.51, p95 42.29, p99 65.56 | client CPU 134% | keys per store 2067/1944/1989
+  GET: 6000 ok, 0 errors | 3330.8 ops/s | avg 14.38 ms, p50 12.34, p95 30.03, p99 56.8 | client CPU 165% | keys per store 2067/1944/1989
+Finished Fri Nov 20 10:57:28 CST 2026

@@ -1,0 +1,2 @@
+# Extra packages for analysis on the laptop only (not installed in the Docker image)
+matplotlib>=3.7

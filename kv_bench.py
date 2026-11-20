@@ -15,7 +15,7 @@ Usage (start the stores first):
   # or from the laptop (slower: goes through Docker Desktop's port forwarding)
   python kv_bench.py --nodes 3 --keys 10000 --threads 24
 
-Prints a summary and appends one row per phase to results/results.csv.
+Prints a summary and appends one row per phase to results/results.csv (or --out FILE).
 """
 import argparse
 import csv
@@ -28,7 +28,6 @@ from datetime import datetime
 
 from kv_client import ShardedKVClient, wait_until_ready
 
-RESULTS_FILE = "results/results.csv"
 FIELDS = ["time", "where", "nodes", "threads", "procs", "keys", "trial", "phase", "ok", "errors",
           "seconds", "throughput", "avg_ms", "p50_ms", "p95_ms", "p99_ms", "client_cpu_pct",
           "keys_per_store"]
@@ -137,10 +136,10 @@ def keys_per_store(nodes):
     return "/".join(str(len(client.keys_on(node))) for node in nodes)
 
 
-def save_row(row):
-    os.makedirs(os.path.dirname(RESULTS_FILE), exist_ok=True)
-    new_file = not os.path.exists(RESULTS_FILE)
-    with open(RESULTS_FILE, "a", newline="") as f:
+def save_row(row, path):
+    os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
+    new_file = not os.path.exists(path)
+    with open(path, "a", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=FIELDS)
         if new_file:
             writer.writeheader()  # column names on the first line only
@@ -154,6 +153,7 @@ def main():
     parser.add_argument("--threads", type=int, default=24, help="simultaneous users (total)")
     parser.add_argument("--procs", type=int, default=1, help="processes to spread the users over")
     parser.add_argument("--trial", type=int, default=1, help="trial number (for repeated runs)")
+    parser.add_argument("--out", default="results/results.csv", help="CSV file to append results to")
     parser.add_argument("--docker", action="store_true",
                         help="running inside Docker: reach stores as kv1:8080 instead of localhost:8081")
     args = parser.parse_args()
@@ -184,7 +184,7 @@ def main():
             "client_cpu_pct": round(cpu_pct),
             "keys_per_store": keys_per_store(nodes),
         }
-        save_row(row)
+        save_row(row, args.out)
         print(f"  {row['phase']}: {ok} ok, {errors} errors | {row['throughput']} ops/s | "
               f"avg {row['avg_ms']} ms, p50 {row['p50_ms']}, p95 {row['p95_ms']}, p99 {row['p99_ms']} | "
               f"client CPU {row['client_cpu_pct']}% | keys per store {row['keys_per_store']}")
