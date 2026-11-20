@@ -3,3 +3,6 @@ __pycache__/
 data/
 logs/
 .DS_Store
+REPORT.md
+README.md
+PLAN.md
