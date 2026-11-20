@@ -41,6 +41,17 @@ services:
     cpus: 1.0
     command: ["python", "kv_server.py", "--host", "0.0.0.0", "--port", "8080", "--log-level", "WARNING"]
 
+  # The benchmark, run inside Docker next to the stores so requests go container-to-container
+  # instead of through Docker Desktop's slow port forwarding on the Mac. Not started by
+  # "docker compose up" (because of the profile); run it on demand:
+  #   docker compose run --rm bench python kv_bench.py --docker --nodes 3 --threads 24 --procs 2
+  bench:
+    image: kv-store             # same image as the stores (it contains all our .py files)
+    profiles: ["bench"]         # only runs when asked for explicitly
+    cpus: 2.0                   # its own CPU budget: 3 stores x 1 + 2 = 5 of Docker's 6, leaving 1 for Docker itself
+    volumes:
+      - ./results:/app/results  # results.csv written inside the container appears in ./results
+
 # Named volumes: storage managed by Docker, one per store, kept separate from each other
 volumes:
   kv1-data:

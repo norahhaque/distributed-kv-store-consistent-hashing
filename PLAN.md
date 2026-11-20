@@ -17,7 +17,7 @@ from 1 to 2 to 3 stores.
 | 4  | Containers: Dockerfile + `docker-compose.yml` | done        |
 | 5  | Sharded client (`kv_client.py`)               | done        |
 | 6  | Adding/removing stores while running          | done        |
-| 7  | Benchmark upgrade (`kv_bench.py`)             | not started |
+| 7  | Benchmark upgrade (`kv_bench.py`)             | done        |
 | 8  | Run the experiments (1 → 2 → 3 stores)        | not started |
 | 9  | Graphs and tables (`plot_results.py`)         | not started |
 | 10 | Report + README, final submission             | not started |
@@ -275,6 +275,12 @@ Keep the structure of the old benchmark (phases, worker threads, queue, per-op t
 
 ## Phase 8: Run the experiments (`run_experiments.sh`)
 
+**Updated after Phase 7 diagnostics:** the benchmark runs *inside Docker* (`bench` service, 2 CPUs,
+`--docker --procs 2`), since running it on the laptop measured Docker Desktop's port forwarding instead of the
+stores. Results vary between runs, so use **5 trials** per configuration and report the median (plus min/max).
+Close heavy apps (VS Code, browsers) during runs. Sweep threads = 1, 3, 6, 12, 24, 48.
+
+
 For N in 1, 2, 3: `docker compose down -v` (clean slate) → `up -d` the first N stores → wait for health → run the
 benchmark **3 trials** → record. Then a **concurrency sweep**: threads = 4, 8, 16, 32 for each N, to show where a
 single store saturates and how extra stores raise that ceiling.
@@ -343,4 +349,17 @@ makes the code more complex.
   into ring-based methods (`put/get/delete`) and direct ones (`put_to/get_from/delete_from`).
 - **Rebalancing is slow-ish** (912 keys in ~8 s, 1072 in ~20 s): each moved key is 3 sequential requests, and the PUT
   and DELETE each fsync to disk. Fine at this scale. Future work: move keys in parallel or in batches.
+- **More stores looked SLOWER** when the benchmark ran on the laptop (1 store 818 SET ops/s, 3 stores 503). → The stores
+  were only ~45-78% busy; Docker Desktop's Mac-to-container port forwarding used ~150% CPU and was the real bottleneck.
+  → Run the benchmark as a container on the same Docker network (`bench` service, stores reached as `kv1:8080`).
+  See `results/diagnostics.md`.
+- **One benchmark process can't send requests fast enough** (Python's GIL limits it to ~1 core of Python work).
+  → Added `--procs`: users and keys are split over several processes; results are merged.
+- **SET scales less than GET.** → All containers' volumes share one virtual disk on one SSD. Measured: 1 container
+  1637 fsyncs/s alone; 3 at once 908 each (2724 total = 1.66x, not 3x). → Not fixable on one laptop; explained as a
+  limitation (real machines have separate disks).
+- **CPU limit enforced in bursts (CFS throttling)** suspected. → Checked cgroup `cpu.stat`: only 0.1-0.5 s frozen per
+  ~70 s run. Minor, so we kept `cpus: 1.0`.
+- **Large run-to-run variation** (e.g. 1-store SET 997 vs 558 ops/s). → Shared laptop: background apps, disk, and VM
+  noise. → 5 trials per configuration, report median and range.
 - **`Dockerfile.txt` not found by `docker build`.** → Docker looks for a file named exactly `Dockerfile`. → Renamed it.

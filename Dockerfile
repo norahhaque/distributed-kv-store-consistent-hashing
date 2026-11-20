@@ -11,8 +11,9 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Add the application source code
-COPY kv_server.py .
+# Add the application source code. All .py files, so the same image can run either a
+# store (kv_server.py) or the benchmark (kv_bench.py + kv_client.py + hash_ring.py)
+COPY *.py .
 
 # The server listens on port 8080
 EXPOSE 8080
