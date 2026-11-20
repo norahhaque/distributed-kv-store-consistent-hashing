@@ -1,0 +1,19 @@
+Step 1: start kv1 + kv2 and write 3000 keys
+    http://localhost:8081 holds 1434 keys
+    http://localhost:8082 holds 1566 keys
+
+Step 2: add kv3
+  before rebalancing: 2088/3000 keys readable (the rest belong to kv3 now)
+  rebalanced: moved 912 keys (30.4%) in 8.14s
+  after rebalancing:  3000/3000 keys readable
+    http://localhost:8081 holds 1016 keys
+    http://localhost:8082 holds 1072 keys
+    http://localhost:8083 holds 912 keys
+
+Step 3: remove kv2
+  rebalanced: moved 1072 keys (35.7%) in 20.52s, then stopped kv2
+  after removing kv2: 3000/3000 keys readable
+    http://localhost:8081 holds 1497 keys
+    http://localhost:8083 holds 1503 keys
+
+PASS: no keys lost

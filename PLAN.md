@@ -15,8 +15,8 @@ from 1 to 2 to 3 stores.
 | 2  | Consistent hashing ring (`hash_ring.py`)      | done        |
 | 3  | Small server additions (`kv_server.py`)       | done        |
 | 4  | Containers: Dockerfile + `docker-compose.yml` | done        |
-| 5  | Sharded client (`kv_client.py`)               | not started |
-| 6  | Adding/removing stores while running          | not started |
+| 5  | Sharded client (`kv_client.py`)               | done        |
+| 6  | Adding/removing stores while running          | done        |
 | 7  | Benchmark upgrade (`kv_bench.py`)             | not started |
 | 8  | Run the experiments (1 → 2 → 3 stores)        | not started |
 | 9  | Graphs and tables (`plot_results.py`)         | not started |
@@ -116,6 +116,7 @@ library, but our own code is short, you'll understand every line, and it counts 
 | `kv_server.py`         | The KV store from Assignment 1, plus a key-listing endpoint and a quiet mode   | small changes |
 | `hash_ring.py`         | Consistent hash ring: add/remove a store, find the store for a key             | new           |
 | `kv_client.py`         | `ShardedKVClient`: get/put/delete that sends each key to the right store       | new           |
+| `check_cluster.py`     | End-to-end check against live containers (write, read, placement, delete)       | new           |
 | `rebalance.py`         | Moves keys to their new owner when a store is added or removed                 | new           |
 | `analyze_hashing.py`   | Offline experiment: key balance and keys moved (modulo vs. consistent)         | new           |
 | `kv_bench.py`          | Benchmark: runs against 1–3 stores, records throughput/latency to CSV          | rewritten     |
@@ -334,4 +335,12 @@ makes the code more complex.
   would disagree about key owners. → Used MD5 from `hashlib`, which is deterministic.
 - **Health route clashing with key routes.** `/_health` also matches `/<path:key>`. → Used the bare `/` instead,
   which `<path:key>` can never match (keys are at least 1 character), for both key listing and health checks.
+- **Keys with spaces, `?`, `#` or `/` would break the URL** (e.g. `GET /a b?` is cut off at the `?`). → URL-encode
+  keys with `urllib.parse.quote` in the client; Flask decodes them back. Tested with `a b?`, `path/with/slash`, unicode.
+- **`NotOpenSSLWarning` on every run.** → macOS's system Python is built with LibreSSL, and urllib3 v2 warns about it.
+  → Pinned `urllib3<2` in `requirements.txt` (we only use plain HTTP, so nothing is lost).
+- **Rebalance needs to talk to a *specific* store**, but the client always let the ring choose. → Split the client
+  into ring-based methods (`put/get/delete`) and direct ones (`put_to/get_from/delete_from`).
+- **Rebalancing is slow-ish** (912 keys in ~8 s, 1072 in ~20 s): each moved key is 3 sequential requests, and the PUT
+  and DELETE each fsync to disk. Fine at this scale. Future work: move keys in parallel or in batches.
 - **`Dockerfile.txt` not found by `docker build`.** → Docker looks for a file named exactly `Dockerfile`. → Renamed it.
